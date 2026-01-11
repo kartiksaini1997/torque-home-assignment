@@ -115,7 +115,7 @@ In Torque:
    * Access Key
    * Secret Key
 
-Recommended credential name: `awscred`
+ credential name: `awscred`
 
 This is required to avoid errors like:
 
@@ -126,8 +126,8 @@ This is required to avoid errors like:
 
 ### Step 3 — Create Blueprint in Torque
 
-1. Go to **Design → Automation Inventory → Blueprints**
-2. Click **New Blueprint**
+1. Go to **Self Service → Blueprints Page**
+2. Click **+ New Blueprint**
 3. Add Terraform asset pointing to:
 
    * Repo store: your configured repo store in Torque
