@@ -11,26 +11,6 @@ CLI) - Optional
 • Familiarity with scripting (e.g., Bash or Python) for any minor automation.
 
 
-## Repo Structure
-
-```
-
-.
-├── modules/
-│   └── s3_bucket/
-│       ├── main.tf
-│       ├── variables.tf
-│       ├── outputs.tf
-│       └── versions.tf
-├── docs/
-│   └── screenshots/
-└── README.md
-
-````
-
----
-
-
 ## Terraform Compatibility Note (Important)
 
 Torque Terraform runners typically support Terraform **up to 1.5.x**.
@@ -235,7 +215,7 @@ outputs:
 This folder in the repo includes all the screenshots:
 
 ```
-docs/screenshots/
+docs/
 ```
 
 
