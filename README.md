@@ -232,9 +232,7 @@ outputs:
 
 ## Screenshots
 
-### Where to store screenshots
-
-Create this folder in the repo:
+This folder in the repo includes all the screenshots:
 
 ```
 docs/screenshots/
