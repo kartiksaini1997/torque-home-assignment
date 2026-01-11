@@ -1,0 +1,75 @@
+spec_version: 2
+description: Creates an S3 bucket using Terraform module
+environment:
+  environment_name: terraform-s3-bucket6-20260111T13205419
+  state: active
+  owner_email: kartiksainiutd@gmail.com
+# inputs can be provided by the user, API or CI plugin when creating an environment.
+inputs:
+  agent:
+    type: agent
+    default: aws-agent1
+    description: Torque agent to run Terraform
+    allowed-values:
+    - aws-agent1
+  region:
+    type: string
+    default: us-east-1
+    description: AWS region for the bucket
+  name_prefix:
+    type: string
+    default: torque-demo
+    description: Prefix for S3 bucket name (random suffix appended)
+  enable_versioning:
+    type: string
+    default: true
+    description: Enable bucket versioning
+    allowed-values:
+    - true
+    - false
+  force_destroy:
+    type: string
+    default: true
+    description: Allow Terraform to delete non-empty bucket
+    allowed-values:
+    - true
+    - false
+# outputs define which data that was generated during environment provisioning will be returned to the user, API or CI.
+outputs:
+  bucket_name:
+    value: '{{ .grains.s3_bucket.outputs.bucket_name }}'
+  bucket_arn:
+    value: '{{ .grains.s3_bucket.outputs.bucket_arn }}'
+  region:
+    value: '{{ .grains.s3_bucket.outputs.region }}'
+grains:
+  s3_bucket:
+    kind: terraform
+    spec:
+      source:
+        store: torque-home-assignment
+        path: modules/s3_bucket
+      agent:
+      # The Torque agent that will be used to provision the environment.
+        name: '{{ .inputs.agent }}'
+        # A service account annotated with a role ARN with permissions to run the asset
+        # service-account: <service-account-name>
+        # Will override the default value for Runners isolation
+        # isolated: <boolean>
+      inputs:
+      - region: '{{ .inputs.region }}'
+      - name_prefix: '{{ .inputs.name_prefix }}'
+      - enable_versioning: '{{ .inputs.enable_versioning }}'
+      - force_destroy: '{{ .inputs.force_destroy }}'
+      # The environment variables declared in this section will be available during the grain deployment as well as the grain destroy phase
+      # env-vars:
+      # - VAR_NAME: var value
+      env-vars: []
+      outputs:
+      - bucket_name
+      - bucket_arn
+      - region
+      # Helm commands to run before installing the chart
+      commands: []
+      authentication:
+      - awscred
