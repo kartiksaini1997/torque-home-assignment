@@ -241,7 +241,7 @@ docs/screenshots/
 
 ### 1) Agent Connected
 
-![Agent Connected](docs/screenshots/01-agent-connected.png)
+![Agent Connected](https://github.com/kartiksaini1997/torque-home-assignment/blob/main/docs/01-agent-connected.png)
 
 ### 2) Blueprint Designer (Terraform Grain)
 
