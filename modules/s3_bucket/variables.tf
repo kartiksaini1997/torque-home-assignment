@@ -5,7 +5,7 @@ variable "region" {
 
 variable "name_prefix" {
   type        = string
-  description = "Prefix for bucket name (random suffix appended)"
+  description = "Prefix for bucket name"
 }
 
 variable "enable_versioning" {
@@ -16,7 +16,7 @@ variable "enable_versioning" {
 
 variable "force_destroy" {
   type        = bool
-  description = "Allow deleting a non-empty bucket (demo-friendly)"
+  description = "Allow deleting a non-empty bucket"
   default     = true
 }
 
