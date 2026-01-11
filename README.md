@@ -152,7 +152,7 @@ This is required to avoid errors like:
 
    * Repo store: your configured repo store in Torque
    * Path: `modules/s3_bucket`
-4. Ensure blueprint YAML includes:
+4. Ensure blueprint  includes:
 
    * Agent input
    * Credentials input
@@ -201,9 +201,9 @@ Add outputs in `modules/s3_bucket/outputs.tf`, e.g.:
 
 ### 2) Expose outputs from the Terraform grain
 
-In blueprint YAML, add under the grain:
+In blueprint , add under the grain:
 
-```yaml
+```
 grains:
   s3_bucket:
     kind: terraform
@@ -218,7 +218,7 @@ grains:
 
 So they show cleanly at the blueprint/environment level:
 
-```yaml
+```
 outputs:
   bucket_name:
     value: '{{ .grains.s3_bucket.outputs.bucket_name }}'
@@ -245,23 +245,23 @@ docs/screenshots/
 
 ### 2) Blueprint Designer (Terraform Grain)
 
-![Blueprint Designer](docs/screenshots/02-blueprint-designer-grain.png)
+![Blueprint Designer](docs/02-blueprint-designer-grain.png)
 
 ### 3) Torque Credentials (AWS)
 
-![Torque Credentials](docs/screenshots/03-torque-credentials.png)
+![Torque Credentials](docs/03-torque-credentials.png)
 
 ### 4) Operation Hub Run
 
-![Operation Hub Run](docs/screenshots/04-operation-hub-run.png)
+![Operation Hub Run](docs/04-operation-hub-run.png)
 
 ### 5) Torque Outputs (I/O tab)
 
-![Torque Outputs](docs/screenshots/05-torque-outputs.png)
+![Torque Outputs](docs/05-torque-outputs.png)
 
 ### 6) AWS S3 Bucket Created
 
-![AWS S3 Bucket](docs/screenshots/06-aws-s3-bucket.png)
+![AWS S3 Bucket](docs/06-aws-s3-bucket.png)
 
 ---
 
@@ -276,7 +276,7 @@ Fix:
 
 * Ensure `agent.name` is not empty and references input:
 
-```yaml
+```
 agent:
   name: '{{ .inputs.agent }}'
 ```
@@ -311,7 +311,7 @@ Fix:
 * Create AWS creds in Torque
 * Reference them in blueprint via `authentication`:
 
-```yaml
+```
 authentication:
   - '{{ .inputs.aws_credentials }}'
 ```
